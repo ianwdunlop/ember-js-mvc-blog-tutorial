@@ -15,6 +15,13 @@ We add some templates for Posts index and each individual Post. We add a store,
 a Post model and some fixtures data to render in the templates. We look at how
 we get data from a store to a template via a route. See http://dev.mygrid.org.uk/blog/?p=75
 
+Part 2 - nested resources
+------------------
+
+We create a comments model and routes and link it to the post model. We add routes, templates
+and controller actions to create new comments
+See http://dev.mygrid.org.uk/blog/?p=97
+
 Licence
 -------
 Available under the MIT licence, see the attached licence.txt file for details
