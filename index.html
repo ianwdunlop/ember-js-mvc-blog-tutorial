@@ -40,6 +40,27 @@
 
   <script type="text/x-handlebars" data-template-name="post/index">
     {{title}}
+    <ul>
+      {{#each comment in comments}}
+        <li>{{#linkTo post.comment comment}}{{comment.text}}{{/linkTo}}</li>
+      {{/each}}
+    </ul>
+    {{#linkTo comments.new}}New Comment{{/linkTo}}
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="post/comment">
+    {{text}}
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="comments">
+    {{outlet}}
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="comments/new">
+    <form {{action save on='submit'}}>
+      {{view Ember.TextArea valueBinding="text" placeholder="Enter comment here"}}
+      <button type="submit">Create Comment</button>  
+    </form>
   </script>
 
   <script src="js/libs/jquery-1.9.1.js"></script>
