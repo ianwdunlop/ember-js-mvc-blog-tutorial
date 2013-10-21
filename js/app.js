@@ -15,12 +15,12 @@ App.Router.map(function() {
 
 App.PostsRoute=Ember.Route.extend({
   model: function(){
-    return App.Post.find();
+    return this.get('store').find('post');
   }
 });
 
 App.PostIndexRoute=Ember.Route.extend({
-  model: function(params) {
+  model: function() {
     return this.modelFor('post');
   }
 });
@@ -38,23 +38,21 @@ App.CommentsNewController=Ember.ObjectController.extend({
 	
 	save: function() {
 		var post = this.get('controllers.post.content');
-		App.Comment.createRecord({ post: post, text: this.get('text') });
+		this.get('store').createRecord({ post: post, text: this.get('text') });
 		this.get('target').transitionTo('post.index');
 	}
 });
 
-App.Store = DS.Store.extend({
-  revision: 12,
-  adapter: 'DS.FixtureAdapter'
-});
+App.ApplicationAdapter = DS.FixtureAdapter;
+
 
 App.Post=DS.Model.extend({
-  comments: DS.hasMany('App.Comment'),
+  comments: DS.hasMany('comment', {async:true}),
   title: DS.attr('string')
 });
 
 App.Comment = DS.Model.extend({
-  post: DS.belongsTo('App.Post'),
+  post: DS.belongsTo('post'),
   text: DS.attr('string')
 });
 
