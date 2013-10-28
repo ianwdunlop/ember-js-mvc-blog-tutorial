@@ -1,6 +1,8 @@
 Ember JS: MVC in the browser tutorial
 =====================================
 
+Now updated for Ember 1.0 http://dev.mygrid.org.uk/blog/?p=218
+
 Part 1 - routing
 ----------------
 
