@@ -3,7 +3,9 @@ App = Ember.Application.create({
 });
 
 App.Router.map(function() {
-  this.resource('posts');
+  this.resource('posts', function() {
+    this.route('new');
+  });
   this.resource('post', { path: '/posts/:post_id' }, function() {
     this.resource('comments', function() {
   	  this.route('new');
@@ -13,7 +15,7 @@ App.Router.map(function() {
   });
 });
 
-App.PostsRoute=Ember.Route.extend({
+App.PostsIndexRoute=Ember.Route.extend({
   model: function(){
     return this.get('store').find('post');
   }
@@ -35,12 +37,33 @@ App.CommentsNewController=Ember.ObjectController.extend({
 	needs: 'post',
 	
 	text: null,
-	
+
+  actions: {
 	save: function() {
 		var post = this.get('controllers.post.content');
-		this.get('store').createRecord({ post: post, text: this.get('text') });
+		var comment = this.get('store').createRecord('comment', { post: post, text: this.get('text') });
+        comment.save().then(function(comment) {
+          post.get('comments').pushObject(comment);
+        });
 		this.get('target').transitionTo('post.index');
 	}
+  }
+});
+
+App.PostsNewController=Ember.ObjectController.extend({
+
+  title: null,
+  text: null,
+
+  actions: {
+    save: function(post) {
+      var me = this;
+      var post = this.get('store').createRecord('post', { title: this.get('title'), text: this.get('text') });
+      post.save().then(function(post) {
+        me.get('target').transitionTo('posts.index');
+      });
+    }
+  }
 });
 
 App.ApplicationAdapter = DS.FixtureAdapter;

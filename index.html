@@ -23,15 +23,21 @@
   </script>
   
   <script type="text/x-handlebars" data-template-name="index">
-    {{#linkTo 'posts'}}Posts{{/linkTo}}
+    <div>{{#linkTo 'posts'}}Posts{{/linkTo}}</div>
+    <div>{{#linkTo 'posts.new'}}New Post{{/linkTo}}</div>
   </script>
 
   <script type="text/x-handlebars" data-template-name="posts">
+    {{outlet}}
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="posts/index">
     <ul>
       {{#each model}}
         <li>{{#linkTo 'post' this}}{{title}}{{/linkTo}}</li>
       {{/each}}
     </ul>
+    <div>{{#linkTo 'posts.new'}}New Post{{/linkTo}}</div>
   </script>
   
   <script type="text/x-handlebars" data-template-name="post">
@@ -42,10 +48,10 @@
     {{title}}
     <ul>
       {{#each comment in comments}}
-        <li>{{#linkTo post.comment comment}}{{comment.text}}{{/linkTo}}</li>
+        <li>{{#linkTo 'post.comment' comment}}{{comment.text}}{{/linkTo}}</li>
       {{/each}}
     </ul>
-    {{#linkTo comments.new}}New Comment{{/linkTo}}
+    {{#linkTo 'comments.new'}}New Comment{{/linkTo}}
   </script>
 
   <script type="text/x-handlebars" data-template-name="post/comment">
@@ -60,6 +66,14 @@
     <form {{action save on='submit'}}>
       {{view Ember.TextArea valueBinding="text" placeholder="Enter comment here"}}
       <button type="submit">Create Comment</button>  
+    </form>
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="posts/new">
+    <form {{action save content on='submit'}}>
+      {{view Ember.TextArea valueBinding="title" placeholder="Enter title here"}}
+      {{view Ember.TextArea valueBinding="text" placeholder="Enter content here"}}
+      <button type="submit">Create Post</button>
     </form>
   </script>
 
