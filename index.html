@@ -1,87 +1,92 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="utf-8">
-<title>Ember JS Blog</title>
-  <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="utf-8">
+    <title>Ember JS Blog</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    <meta charset="utf-8">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://builds.handlebarsjs.com.s3.amazonaws.com/handlebars-v2.0.0.js"></script>
+    <script src="http://builds.emberjs.com/release/ember.js"></script>
+    <script src="http://builds.emberjs.com/beta/ember-data.js"></script>
+    <script src="http://builds.emberjs.com/release/ember-template-compiler.js"></script>
 </head>
+
 <body>
 
-  <script type="text/x-handlebars">
-    <body>
-      <header>
-        <h1>Blog</h1>
-      </header>
-      <div>
+    <script type="text/x-handlebars">
+
+        <body>
+            <header>
+                <h1>Blog</h1>
+            </header>
+            <div>
+                {{outlet}}
+            </div>
+            <footer>
+                &copy;2013 Ian Dunlop.
+            </footer>
+        </body>
+    </script>
+
+    <script type="text/x-handlebars" data-template-name="index">
+        <div>{{#linkTo 'posts'}}Posts{{/linkTo}}</div>
+        <div>{{#linkTo 'posts.new'}}New Post{{/linkTo}}</div>
+    </script>
+
+    <script type="text/x-handlebars" data-template-name="posts">
         {{outlet}}
-      </div>
-      <footer>
-        &copy;2013 Ian Dunlop.
-      </footer>
-    </body>
-  </script>
-  
-  <script type="text/x-handlebars" data-template-name="index">
-    <div>{{#linkTo 'posts'}}Posts{{/linkTo}}</div>
-    <div>{{#linkTo 'posts.new'}}New Post{{/linkTo}}</div>
-  </script>
+    </script>
 
-  <script type="text/x-handlebars" data-template-name="posts">
-    {{outlet}}
-  </script>
+    <script type="text/x-handlebars" data-template-name="posts/index">
+        <ul>
+            {{#each model}}
+            <li>{{#linkTo 'post' this}}{{title}}{{/linkTo}}</li>
+            {{/each}}
+        </ul>
+        <div>{{#linkTo 'posts.new'}}New Post{{/linkTo}}</div>
+    </script>
 
-  <script type="text/x-handlebars" data-template-name="posts/index">
-    <ul>
-      {{#each model}}
-        <li>{{#linkTo 'post' this}}{{title}}{{/linkTo}}</li>
-      {{/each}}
-    </ul>
-    <div>{{#linkTo 'posts.new'}}New Post{{/linkTo}}</div>
-  </script>
-  
-  <script type="text/x-handlebars" data-template-name="post">
-    {{outlet}}
-  </script>
+    <script type="text/x-handlebars" data-template-name="post">
+        {{outlet}}
+    </script>
 
-  <script type="text/x-handlebars" data-template-name="post/index">
-    {{title}}
-    <ul>
-      {{#each comment in comments}}
-        <li>{{#linkTo 'post.comment' comment}}{{comment.text}}{{/linkTo}}</li>
-      {{/each}}
-    </ul>
-    {{#linkTo 'comments.new'}}New Comment{{/linkTo}}
-  </script>
+    <script type="text/x-handlebars" data-template-name="post/index">
+        {{title}}
+        <ul>
+            {{#each comment in comments}}
+            <li>{{#linkTo 'post.comment' comment}}{{comment.text}}{{/linkTo}}</li>
+            {{/each}}
+        </ul>
+        {{#linkTo 'comments.new'}}New Comment{{/linkTo}}
+    </script>
 
-  <script type="text/x-handlebars" data-template-name="post/comment">
-    {{text}}
-  </script>
+    <script type="text/x-handlebars" data-template-name="post/comment">
+        {{text}}
+    </script>
 
-  <script type="text/x-handlebars" data-template-name="comments">
-    {{outlet}}
-  </script>
+    <script type="text/x-handlebars" data-template-name="comments">
+        {{outlet}}
+    </script>
 
-  <script type="text/x-handlebars" data-template-name="comments/new">
-    <form {{action save on='submit'}}>
-      {{view Ember.TextArea valueBinding="text" placeholder="Enter comment here"}}
-      <button type="submit">Create Comment</button>  
-    </form>
-  </script>
+    <script type="text/x-handlebars" data-template-name="comments/new">
+        <form {{action save on='submit' }}>
+            {{view Ember.TextArea valueBinding="text" placeholder="Enter comment here"}}
+            <button type="submit">Create Comment</button>
+        </form>
+    </script>
 
-  <script type="text/x-handlebars" data-template-name="posts/new">
-    <form {{action save content on='submit'}}>
-      {{view Ember.TextArea valueBinding="title" placeholder="Enter title here"}}
-      {{view Ember.TextArea valueBinding="text" placeholder="Enter content here"}}
-      <button type="submit">Create Post</button>
-    </form>
-  </script>
-
-  <script src="js/libs/jquery-1.9.1.js"></script>
-  <script src="js/libs/handlebars.js"></script>
-  <script src="js/libs/ember.js"></script>
-  <script src="js/libs/ember-data.js"></script>
-  <script src="js/app.js"></script>
+    <script type="text/x-handlebars" data-template-name="posts/new">
+        <form {{action save content on='submit' }}>
+            {{view Ember.TextArea valueBinding="title" placeholder="Enter title here"}} {{view
+            Ember.TextArea valueBinding="text" placeholder="Enter content here"}}
+            <button type="submit">Create Post</button>
+        </form>
+    </script>
+    <script src="js/app.js"></script>
 
 </body>
+
 </html>
