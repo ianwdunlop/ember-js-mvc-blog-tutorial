@@ -32,8 +32,8 @@
     </script>
 
     <script type="text/x-handlebars" data-template-name="index">
-        <div>{{#linkTo 'posts'}}Posts{{/linkTo}}</div>
-        <div>{{#linkTo 'posts.new'}}New Post{{/linkTo}}</div>
+        <div>{{#link-to 'posts'}}Posts{{/link-to}}</div>
+        <div>{{#link-to 'posts.new'}}New Post{{/link-to}}</div>
     </script>
 
     <script type="text/x-handlebars" data-template-name="posts">
@@ -42,11 +42,11 @@
 
     <script type="text/x-handlebars" data-template-name="posts/index">
         <ul>
-            {{#each model}}
-            <li>{{#linkTo 'post' this}}{{title}}{{/linkTo}}</li>
+            {{#each post in model}}
+            <li>{{#link-to 'post' post}}{{post.title}}{{/link-to}}</li>
             {{/each}}
         </ul>
-        <div>{{#linkTo 'posts.new'}}New Post{{/linkTo}}</div>
+        <div>{{#link-to 'posts.new'}}New Post{{/link-to}}</div>
     </script>
 
     <script type="text/x-handlebars" data-template-name="post">
@@ -57,10 +57,10 @@
         {{title}}
         <ul>
             {{#each comment in comments}}
-            <li>{{#linkTo 'post.comment' comment}}{{comment.text}}{{/linkTo}}</li>
+            <li>{{#link-to 'post.comment' comment}}{{comment.text}}{{/link-to}}</li>
             {{/each}}
         </ul>
-        {{#linkTo 'comments.new'}}New Comment{{/linkTo}}
+        {{#link-to 'comments.new'}}New Comment{{/link-to}}
     </script>
 
     <script type="text/x-handlebars" data-template-name="post/comment">
@@ -72,16 +72,15 @@
     </script>
 
     <script type="text/x-handlebars" data-template-name="comments/new">
-        <form {{action save on='submit' }}>
-            {{view Ember.TextArea valueBinding="text" placeholder="Enter comment here"}}
+        <form {{action 'save' on='submit' }}>
+            {{textarea valueBinding="text" placeholder="Enter comment here"}}
             <button type="submit">Create Comment</button>
         </form>
     </script>
 
     <script type="text/x-handlebars" data-template-name="posts/new">
-        <form {{action save content on='submit' }}>
-            {{view Ember.TextArea valueBinding="title" placeholder="Enter title here"}} {{view
-            Ember.TextArea valueBinding="text" placeholder="Enter content here"}}
+        <form {{action 'save' content on='submit' }}>
+            {{textarea valueBinding="title" placeholder="Enter title here"}} {{textarea valueBinding="text" placeholder="Enter content here"}}
             <button type="submit">Create Post</button>
         </form>
     </script>

@@ -27,11 +27,20 @@ App.PostIndexRoute=Ember.Route.extend({
   }
 });
 
+App.PostsNewRoute=Ember.Route.extend({
+	setupController: function(controller, model) {
+controller.set('title', null);
+controller.set('text', null);
+	}
+});
+
 App.CommentsNewRoute=Ember.Route.extend({
   setupController: function(controller, model) {
     controller.set('text', null);
   }	
 });
+
+
 
 App.CommentsNewController=Ember.ObjectController.extend({
 	needs: 'post',
