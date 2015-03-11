@@ -35,7 +35,7 @@ use the following syntax
 {{/each}}
 ```
 
-Ember is also transitioning towards the HTMLBars templating engine and now requires the [ember-template-compiler](builds.emberjs.com/release/ember-template-compiler.js]. It can be quite confusing finding the different components you require. A good guide is to look at http://builds.emberjs.com. I have used the `release` channel for [ember](builds.emberjs.com/release/ember.js) and the `beta` one for [ember data](builds.emberjs.com/beta/ember-data.js).  Ember now uses Handlebars [version 2.0](http://builds.handlebarsjs.com.s3.amazonaws.com/handlebars-v2.0.0.js).
+Ember is also transitioning towards the HTMLBars templating engine and now requires the [ember-template-compiler](http://builds.emberjs.com/release/ember-template-compiler.js). It can be quite confusing finding the different components you require. A good guide is to look at http://builds.emberjs.com. I have used the `release` channel for [ember](http://builds.emberjs.com/release/ember.js) and the `beta` one for [ember data](http://builds.emberjs.com/beta/ember-data.js).  Ember now uses Handlebars [version 2.0](http://builds.handlebarsjs.com.s3.amazonaws.com/handlebars-v2.0.0.js).
 
 Part 1 - routing
 ----------------
