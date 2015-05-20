@@ -26,7 +26,7 @@
                 {{outlet}}
             </div>
             <footer>
-                &copy;2013 Ian Dunlop.
+                &copy;2013-2015 Ian Dunlop.
             </footer>
         </body>
     </script>
@@ -54,9 +54,9 @@
     </script>
 
     <script type="text/x-handlebars" data-template-name="post/index">
-        {{title}}
+        {{model.title}}
         <ul>
-            {{#each comment in comments}}
+            {{#each comment in model.comments}}
             <li>{{#link-to 'post.comment' comment}}{{comment.text}}{{/link-to}}</li>
             {{/each}}
         </ul>
@@ -64,7 +64,7 @@
     </script>
 
     <script type="text/x-handlebars" data-template-name="post/comment">
-        {{text}}
+        {{model.text}}
     </script>
 
     <script type="text/x-handlebars" data-template-name="comments">
@@ -73,14 +73,14 @@
 
     <script type="text/x-handlebars" data-template-name="comments/new">
         <form {{action 'save' on='submit' }}>
-            {{textarea valueBinding="text" placeholder="Enter comment here"}}
+            {{textarea value=text placeholder="Enter comment here"}}
             <button type="submit">Create Comment</button>
         </form>
     </script>
 
     <script type="text/x-handlebars" data-template-name="posts/new">
         <form {{action 'save' content on='submit' }}>
-            {{textarea valueBinding="title" placeholder="Enter title here"}} {{textarea valueBinding="text" placeholder="Enter content here"}}
+            {{textarea value=title placeholder="Enter title here"}} {{textarea value=text placeholder="Enter content here"}}
             <button type="submit">Create Post</button>
         </form>
     </script>

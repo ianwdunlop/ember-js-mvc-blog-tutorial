@@ -1,4 +1,4 @@
-App = Ember.Application.create({
+var App = Ember.Application.create({
     LOG_TRANSITIONS: true
 });
 
@@ -46,7 +46,7 @@ App.CommentsNewRoute = Ember.Route.extend({
 
 
 
-App.CommentsNewController = Ember.ObjectController.extend({
+App.CommentsNewController = Ember.Controller.extend({
     needs: 'post',
 
     text: null,
@@ -66,7 +66,7 @@ App.CommentsNewController = Ember.ObjectController.extend({
     }
 });
 
-App.PostsNewController = Ember.ObjectController.extend({
+App.PostsNewController = Ember.Controller.extend({
 
     title: null,
     text: null,
