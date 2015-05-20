@@ -1,7 +1,7 @@
 Ember JS: MVC in the browser tutorial
 =====================================
 
-Now updated to [Ember 1.10](http://emberjs.com/blog/2015/02/07/ember-1-10-0-released.html)
+Now updated to [Ember 1.11](http://emberjs.com/blog/2015/03/27/ember-1-11-0-released.html)
 
 The tutorials below now contain some legacy code but the basic idea is still sound. Some  of the handlebars helpers have [changed](http://emberjs.com/guides/deprecations/). For example, the built in `{{View}}` helpers have different syntax.
 
@@ -34,6 +34,8 @@ use the following syntax
     {{post.text}}
 {{/each}}
 ```
+
+The `ObjectController` has been deprecated and is now just `Controller`. In templates you need to refer to the model eg `{{model.posts}}` rather than just using `{{posts}}`.
 
 Ember is also transitioning towards the HTMLBars templating engine and now requires the [ember-template-compiler](http://builds.emberjs.com/release/ember-template-compiler.js). It can be quite confusing finding the different components you require. A good guide is to look at http://builds.emberjs.com. I have used the `release` channel for [ember](http://builds.emberjs.com/release/ember.js) and the `beta` one for [ember data](http://builds.emberjs.com/beta/ember-data.js).  Ember now uses Handlebars [version 2.0](http://builds.handlebarsjs.com.s3.amazonaws.com/handlebars-v2.0.0.js).
 
