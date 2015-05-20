@@ -1,7 +1,7 @@
 Ember JS: MVC in the browser tutorial
 =====================================
 
-Now updated to [Ember 1.11](http://emberjs.com/blog/2015/03/27/ember-1-11-0-released.html)
+Now updated to [Ember 1.11](http://emberjs.com/blog/2015/03/27/ember-1-11-0-released.html) with [live example](http://ianwdunlop.github.io/ember-js-mvc-blog-tutorial/).
 
 The tutorials below now contain some legacy code but the basic idea is still sound. Some  of the handlebars helpers have [changed](http://emberjs.com/guides/deprecations/). For example, the built in `{{View}}` helpers have different syntax.
 
