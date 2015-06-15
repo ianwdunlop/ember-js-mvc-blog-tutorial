@@ -16,7 +16,7 @@ you should now use
 ```handlebars
 {{textarea}}
 ```
-The context switching version of the `{{each}} helper has been deprecated and you should now specify the context. So instead of
+The context switching version of the `{{each}}` helper has been deprecated and you should now specify the context. So instead of
 
 ```handlebars
 {{#each}}
@@ -30,6 +30,15 @@ use the following syntax
 
 ```handlebars
 {{#each post in model}}
+    {{post.title}}
+    {{post.text}}
+{{/each}}
+```
+
+Note that the 'in' syntax is also being deprecated and becomes 'as' with a 'key' [option](https://github.com/emberjs/ember.js/blob/0ba7856ba1db595eb45689610793d98e6a508bfb/packages/ember-htmlbars/lib/helpers/each.js#L37) that helps Ember when rendering
+
+```handlebars
+{{#each model key="@index" as |post|}}
     {{post.title}}
     {{post.text}}
 {{/each}}
