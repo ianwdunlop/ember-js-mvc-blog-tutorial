@@ -42,7 +42,7 @@
 
     <script type="text/x-handlebars" data-template-name="posts/index">
         <ul class="posts">
-	    {{#each model as |post|}}
+	    {{#each model key="@index" as |post|}}
             <li>{{#link-to 'post' post}}{{post.title}}{{/link-to}}</li>
             {{/each}}
         </ul>
@@ -56,7 +56,7 @@
     <script type="text/x-handlebars" data-template-name="post/index">
         {{model.title}}
         <ul>
-            {{#each model.comments as |comment|}}
+            {{#each model.comments key="@index" as |comment|}}
             <li>{{#link-to 'post.comment' comment}}{{comment.text}}{{/link-to}}</li>
             {{/each}}
         </ul>
