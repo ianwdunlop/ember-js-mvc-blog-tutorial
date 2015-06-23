@@ -60,18 +60,18 @@
             <li>{{#link-to 'post.comment' comment}}{{comment.text}}{{/link-to}}</li>
             {{/each}}
         </ul>
-        {{#link-to 'comments.new'}}New Comment{{/link-to}}
+        {{#link-to 'post.comments.new'}}New Comment{{/link-to}}
     </script>
 
     <script type="text/x-handlebars" data-template-name="post/comment">
         {{model.text}}
     </script>
 
-    <script type="text/x-handlebars" data-template-name="comments">
+    <script type="text/x-handlebars" data-template-name="post/comments">
         {{outlet}}
     </script>
 
-    <script type="text/x-handlebars" data-template-name="comments/new">
+    <script type="text/x-handlebars" data-template-name="post/comments/new">
         <form {{action 'save' on='submit' }}>
             {{textarea value=text placeholder="Enter comment here"}}
             <button type="submit">Create Comment</button>

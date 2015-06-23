@@ -3,13 +3,13 @@ var App = Ember.Application.create({
 });
 
 App.Router.map(function() {
-    this.resource('posts', function() {
+    this.route('posts', function() {
         this.route('new');
     });
-    this.resource('post', {
+    this.route('post', {
         path: '/posts/:post_id'
     }, function() {
-        this.resource('comments', function() {
+        this.route('comments', function() {
             this.route('new');
             this.route('create');
         });
@@ -38,7 +38,7 @@ App.PostsNewRoute = Ember.Route.extend({
     }
 });
 
-App.CommentsNewRoute = Ember.Route.extend({
+App.PostCommentsNewRoute = Ember.Route.extend({
     setupController: function(controller, model) {
         controller.set('text', null);
     }
@@ -46,7 +46,7 @@ App.CommentsNewRoute = Ember.Route.extend({
 
 
 
-App.CommentsNewController = Ember.Controller.extend({
+App.PostCommentsNewController = Ember.Controller.extend({
     needs: 'post',
 
     text: null,
