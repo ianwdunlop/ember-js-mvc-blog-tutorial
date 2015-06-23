@@ -67,10 +67,6 @@
         {{model.text}}
     </script>
 
-    <script type="text/x-handlebars" data-template-name="post/comments">
-        {{outlet}}
-    </script>
-
     <script type="text/x-handlebars" data-template-name="post/comments/new">
         <form {{action 'save' on='submit' }}>
             {{textarea value=text placeholder="Enter comment here"}}
